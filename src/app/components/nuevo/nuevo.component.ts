@@ -3,6 +3,7 @@ import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-nuevo',
@@ -14,12 +15,25 @@ export class NuevoComponent implements OnInit {
   PaisesList: any[] = []
   CargosList: any[] = []
   area: boolean = false
-  Employee: Employee = {status: true, comision: 0}
+
+  form: FormGroup
 
   constructor(
     private dataService: DataService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private _builder: FormBuilder
+  ) { 
+    this.form = this._builder.group({
+      name: ['', Validators.required],
+      birthdate: ['', Validators.required],
+      country: ['', Validators.required],
+      username: ['', Validators.required],
+      hiringdate: ['', Validators.required],
+      status: [true, Validators.required],
+      cargo: ['', Validators.required],
+      comision: [0],
+    })
+  }
 
   ngOnInit(): void {
     this.getPaises()
@@ -35,11 +49,12 @@ export class NuevoComponent implements OnInit {
     )
   }
 
+  areat: string
   clickArea() {
     this.area = !this.area
 
-    this.area? this.Employee.area = 'Administrativa': this.Employee.area = 'Tecnología'
-    this.getCargosByArea(this.Employee.area)
+    this.area? this.areat = 'Administrativa': this.areat = 'Tecnología'
+    this.getCargosByArea(this.areat)
   }
 
   getCargosByArea(area: string) {
@@ -51,9 +66,16 @@ export class NuevoComponent implements OnInit {
     )
   }
 
-  guardar() {
-    console.log(this.Employee)
-    if (
+  guardar(value) {
+    value = {...value, area: this.areat}
+    this.dataService.createEmployee(value).subscribe(
+      res => {
+        this.router.navigate(["/lista"])
+      },
+      error => console.log(error)
+    )
+    //console.log(this.Employee)
+    /* if (
       this.Employee.name == null || this.Employee.birthdate == null || this.Employee.country == null ||
       this.Employee.username == null || this.Employee.hiringdate == null || this.Employee.cargo == null
     ) {
@@ -71,6 +93,6 @@ export class NuevoComponent implements OnInit {
         },
         error => console.log(error)
       )
-    }
+    } */
   }
 }

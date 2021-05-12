@@ -2,12 +2,12 @@
     <h1>Nuevo Empleado</h1>
 
     <div class="mt-4">
-        <div class="form">
+        <form [formGroup]="form" (ngSubmit)="guardar(form.value)">
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" [(ngModel)]="Employee.name" class="form-control" id="nombre" name="nombre">
+                        <input type="text" formControlName="name" class="form-control" id="nombre" name="nombre">
                     </div>
                 </div>
                 <div class="col-6">
@@ -22,13 +22,13 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="fecha">Fecha de nacimiento</label>
-                        <input type="date" [(ngModel)]="Employee.birthdate" class="form-control" id="fecha" name="fecha">
+                        <input type="date" formControlName="birthdate" class="form-control" id="fecha" name="fecha">
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="cargo">Cargo</label>
-                        <select class="form-select" [(ngModel)]="Employee.cargo" name="cargo" id="cargo">
+                        <select class="form-select" formControlName="cargo" name="cargo" id="cargo">
                             <option *ngFor="let cargo of CargosList" [value]="cargo._id">{{cargo.cargo}}</option>
                         </select>
                     </div>
@@ -38,7 +38,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="pais">País</label>
-                        <select class="form-select" [(ngModel)]="Employee.country" name="pais" id="pais">
+                        <select class="form-select" formControlName="country" name="pais" id="pais">
                             <option *ngFor="let pais of PaisesList" [value]="pais.name">{{pais.name}}</option>
                         </select>
                     </div>
@@ -48,7 +48,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="username">Nombre de usuario</label>
-                        <input type="text" [(ngModel)]="Employee.username" class="form-control" id="username" name="username">
+                        <input type="text" formControlName="username" class="form-control" id="username" name="username">
                     </div>
                 </div>
             </div>
@@ -56,13 +56,13 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="hiringdate">Fecha de contratación</label>
-                        <input type="date" [(ngModel)]="Employee.hiringdate" class="form-control" id="hiringdate" name="hiringdate">
+                        <input type="date" formControlName="hiringdate" class="form-control" id="hiringdate" name="hiringdate">
                     </div>
                 </div>
-                <div [style.display]="Employee.cargo !== '609bdd24df06bc3294767ce7'? 'none': null" class="col-6">
+                <div [style.display]="form.value.cargo !== '609bdd24df06bc3294767ce7'? 'none': null" class="col-6">
                     <div class="form-group">
                         <label for="comision">Comisión</label>
-                        <input type="number" min="0" max="100" [(ngModel)]="Employee.comision" class="form-control" id="comision" name="comision">
+                        <input type="number" min="0" max="100" formControlName="comision" class="form-control" id="comision" name="comision">
                     </div>
                 </div>
             </div> 
@@ -70,15 +70,15 @@
                 <div class="col-6">
                     <div class="form-check form-switch">
                         <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
-                        <input class="form-check-input" [(ngModel)]="Employee.status" type="checkbox" id="flexSwitchCheckDefault" checked>
+                        <input class="form-check-input" formControlName="status" type="checkbox" id="flexSwitchCheckDefault" checked>
                       </div>
                 </div>
             </div>
-        </div>
 
-        <div class="mt-4">
-            <button routerLink="/lista" class="btn btn-info mx-4" style="color: white;">Atrás</button>
-            <button (click)="guardar()" class="btn btn-success">Guardar</button>
-        </div>
+            <div class="mt-4">
+                <button routerLink="/lista" class="btn btn-info mx-4" style="color: white;">Atrás</button>
+                <button type="submit" [disabled]="form.invalid" class="btn btn-success">Guardar</button>
+            </div>
+        </form>
     </div>
 </div>

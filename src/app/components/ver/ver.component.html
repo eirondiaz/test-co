@@ -59,7 +59,7 @@
                         <input class="form-check-input" disabled [(ngModel)]="Employee.status" type="checkbox" id="flexSwitchCheckDefault" checked>
                       </div>
                 </div>
-                <div [style.display]="Employee.cargo !== '609bdd24df06bc3294767ce7'? 'none': null" class="col-6">
+                <div [style.display]="Employee.cargo == '609bdd24df06bc3294767ce7'? 'none': null" class="col-6">
                     <div class="form-group">
                         <label for="comision">Comisión</label>
                         <input type="number" readonly min="0" max="100" [(ngModel)]="Employee.comision" class="form-control" id="comision" name="comision">

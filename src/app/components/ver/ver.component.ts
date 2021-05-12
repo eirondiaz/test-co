@@ -28,7 +28,6 @@ export class VerComponent implements OnInit {
         this.Employee = res.data
         this.Employee.birthdate = this.Employee.birthdate.substring(0, 10)
         this.Employee.hiringdate = this.Employee.hiringdate.substring(0, 10)
-        console.log(res)
       },
       error => console.log(error)
     )
