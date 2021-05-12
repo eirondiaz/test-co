@@ -2,6 +2,7 @@ import { Employee } from './../../models/Employee';
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-nuevo',
@@ -56,12 +57,16 @@ export class NuevoComponent implements OnInit {
       this.Employee.name == null || this.Employee.birthdate == null || this.Employee.country == null ||
       this.Employee.username == null || this.Employee.hiringdate == null || this.Employee.cargo == null
     ) {
-      console.log('falta')
+      Swal.fire({
+        icon: 'error',
+        title: 'Debes llenar todos los campos',
+        showConfirmButton: true,
+      })
     }
     else {
       this.dataService.createEmployee(this.Employee).subscribe(
         res => {
-          console.log(res)
+          this.Employee = {}
           this.router.navigate(["/lista"])
         },
         error => console.log(error)
