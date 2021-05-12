@@ -15,12 +15,14 @@
         </thead>
         <tbody>
           <tr *ngFor="let emp of ListEmployees">
-            <td>{{emp.name}} {{emp.cargo.cargo}}</td>
+            <td>
+              <b>{{emp.name}} </b>
+              {{emp.cargo.cargo}}</td>
             <td>Otto</td>
-            <td>{{emp.hiringdate}}</td>
+            <td>{{emp.hiringdate | date}}</td>
             <td>
               <i style="cursor: pointer;" class="fas fa-edit"></i> | 
-              <i style="cursor: pointer;" class="fas fa-eye"></i> | 
+              <i style="cursor: pointer;" [routerLink]="['/ver', emp._id]" class="fas fa-eye"></i> | 
               <i style="cursor: pointer;" (click)="deleteEmployee(emp._id)" class="fas fa-trash-alt"></i>
             </td>
           </tr>

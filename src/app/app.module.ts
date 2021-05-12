@@ -8,7 +8,7 @@ import { ListaComponent } from './components/lista/lista.component';
 import { NuevoComponent } from './components/nuevo/nuevo.component';
 import { EditarComponent } from './components/editar/editar.component';
 import { VerComponent } from './components/ver/ver.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

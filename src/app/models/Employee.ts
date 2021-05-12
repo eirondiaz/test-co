@@ -7,6 +7,6 @@ export interface Employee {
     hiringdate?: string
     status?: boolean
     area?: string
-    cargo?: string
+    cargo?: any
     comision?: number
 }

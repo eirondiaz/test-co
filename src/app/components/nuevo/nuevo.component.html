@@ -28,7 +28,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="cargo">Cargo</label>
-                        <select class="form-control" [(ngModel)]="Employee.cargo" name="cargo" id="cargo">
+                        <select class="form-select" [(ngModel)]="Employee.cargo" name="cargo" id="cargo">
                             <option *ngFor="let cargo of CargosList" [value]="cargo._id">{{cargo.cargo}}</option>
                         </select>
                     </div>
@@ -38,7 +38,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="pais">País</label>
-                        <select class="form-control" [(ngModel)]="Employee.country" name="pais" id="pais">
+                        <select class="form-select" [(ngModel)]="Employee.country" name="pais" id="pais">
                             <option *ngFor="let pais of PaisesList" [value]="pais.name">{{pais.name}}</option>
                         </select>
                     </div>
@@ -64,6 +64,14 @@
                         <label for="comision">Comisión</label>
                         <input type="number" min="0" max="100" [(ngModel)]="Employee.comision" class="form-control" id="comision" name="comision">
                     </div>
+                </div>
+            </div> 
+            <div class="row mt-3">
+                <div class="col-6">
+                    <div class="form-check form-switch">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
+                        <input class="form-check-input" [(ngModel)]="Employee.status" type="checkbox" id="flexSwitchCheckDefault" checked>
+                      </div>
                 </div>
             </div>
         </div>

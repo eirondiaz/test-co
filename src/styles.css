@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+.btn-l {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    height: 35px;
+    background-color: rgb(202, 202, 202);
+    border-right: 1px solid black;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.btn-r {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    height: 35px;
+    background-color: rgb(202, 202, 202);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}

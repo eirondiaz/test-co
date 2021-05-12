@@ -14,7 +14,7 @@ export class NuevoComponent implements OnInit {
   PaisesList: any[] = []
   CargosList: any[] = []
   area: boolean = false
-  Employee: Employee = {}
+  Employee: Employee = {status: true, comision: 0}
 
   constructor(
     private dataService: DataService,
@@ -66,7 +66,7 @@ export class NuevoComponent implements OnInit {
     else {
       this.dataService.createEmployee(this.Employee).subscribe(
         res => {
-          this.Employee = {}
+          this.Employee = {status: true, comision: 0}
           this.router.navigate(["/lista"])
         },
         error => console.log(error)

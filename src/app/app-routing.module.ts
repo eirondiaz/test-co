@@ -15,7 +15,7 @@ const routes: Routes = [
     component: NuevoComponent
   },
   {
-    path: 'ver',
+    path: 'ver/:id',
     component: VerComponent
   },
   {
