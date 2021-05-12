@@ -20,7 +20,7 @@ export class ListaComponent implements OnInit {
   getAllEmployees() {
     this.dataService.getAllEmployees().subscribe(
       res => {
-        console.log(res)
+        this.ListEmployees = res.data
       },
       error => console.log(error)
     )

@@ -8,6 +8,7 @@ import { ListaComponent } from './components/lista/lista.component';
 import { NuevoComponent } from './components/nuevo/nuevo.component';
 import { EditarComponent } from './components/editar/editar.component';
 import { VerComponent } from './components/ver/ver.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { VerComponent } from './components/ver/ver.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

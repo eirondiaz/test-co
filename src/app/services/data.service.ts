@@ -30,4 +30,12 @@ export class DataService {
   deleteEmployee(id: string) {
     return this._http.delete<any>(this.API + id) 
   }
+
+  getCargoByArea(area: string) {
+    return this._http.get<any>('https://apirest-dr.herokuapp.com/api/v1/cargos/' + area)
+  }
+
+  getPaises() {
+    return this._http.get<any>('https://restcountries.eu/rest/v2/all') 
+  }
 }
