@@ -1,1 +1,27 @@
-<p>lista works!</p>
+<div class="container my-4">
+    <div>
+        <h4>Empleados</h4>
+        <input type="text" placeholder="Buscar por cualquier campo">
+    </div>
+
+    <table class="table mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Nombre (cargo)</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Fecha contratación</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of ListEmployees">
+            <td>{{emp.name}} {{emp.cargo.cargo}}</td>
+            <td>Otto</td>
+            <td>{{emp.hiringdate}}</td>
+            <td><i class="fas fa-edit"></i> | <i class="fas fa-eye"></i> | <i class="fas fa-trash-alt"></i></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="btn btn-primary" routerLink="/nuevo"><i class="fas fa-plus"></i> Crear nuevo empleado</button>
+</div>

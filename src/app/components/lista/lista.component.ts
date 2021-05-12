@@ -1,3 +1,5 @@
+import { DataService } from './../../services/data.service';
+import { Employee } from './../../models/Employee';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaComponent implements OnInit {
 
-  constructor() { }
+  ListEmployees: Employee[] = []
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.getAllEmployees()
   }
 
+  getAllEmployees() {
+    this.dataService.getAllEmployees().subscribe(
+      res => {
+        console.log(res)
+      },
+      error => console.log(error)
+    )
+  }
 }
