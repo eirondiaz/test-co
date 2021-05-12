@@ -9,4 +9,5 @@ export interface Employee {
     area?: string
     cargo?: any
     comision?: number
+    edad?: number
 }

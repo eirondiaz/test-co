@@ -66,33 +66,42 @@ export class NuevoComponent implements OnInit {
     )
   }
 
+  calcularEdad(fecha) {
+    var hoy = new Date();
+    var cumpleanos = new Date(fecha);
+    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    var m = hoy.getMonth() - cumpleanos.getMonth();
+
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+
+    return edad;
+  }
+
   guardar(value) {
     value = {...value, area: this.areat}
+    if (this.calcularEdad(value.birthdate) < 18) {
+      Swal.fire({
+        icon: 'error',
+        title: 'La edad debe ser mayor a 18 años',
+        showConfirmButton: true,
+      })
+
+      return
+    }
     this.dataService.createEmployee(value).subscribe(
       res => {
         this.router.navigate(["/lista"])
       },
-      error => console.log(error)
+      error => {
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Ha ocurrido un error',
+          showConfirmButton: true,
+        })
+      }
     )
-    //console.log(this.Employee)
-    /* if (
-      this.Employee.name == null || this.Employee.birthdate == null || this.Employee.country == null ||
-      this.Employee.username == null || this.Employee.hiringdate == null || this.Employee.cargo == null
-    ) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Debes llenar todos los campos',
-        showConfirmButton: true,
-      })
-    }
-    else {
-      this.dataService.createEmployee(this.Employee).subscribe(
-        res => {
-          this.Employee = {status: true, comision: 0}
-          this.router.navigate(["/lista"])
-        },
-        error => console.log(error)
-      )
-    } */
   }
 }
