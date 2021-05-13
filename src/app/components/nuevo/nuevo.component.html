@@ -48,7 +48,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="username">Nombre de usuario</label>
-                        <input type="text" formControlName="username" class="form-control inp" id="username" name="username">
+                        <input type="text" [class.inp-invalid]="this.form.get('username').invalid && this.form.get('username').touched" formControlName="username" class="form-control inp" id="username" name="username">
                     </div>
                 </div>
             </div>

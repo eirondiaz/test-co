@@ -40,7 +40,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="username">Nombre de usuario</label>
-                        <input type="text" [(ngModel)]="Employee.username" formControlName="username" class="form-control inp" id="username" name="username">
+                        <input type="text" [class.inp-invalid]="this.form.get('username').invalid && this.form.get('username').touched" [(ngModel)]="Employee.username" formControlName="username" class="form-control inp" id="username" name="username">
                     </div>
                 </div>
             </div>
