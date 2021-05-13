@@ -19,7 +19,7 @@ const routes: Routes = [
     component: VerComponent
   },
   {
-    path: 'lista',
+    path: 'editar/:id',
     component: EditarComponent
   },
   {

@@ -23,7 +23,7 @@
               <td>{{emp.edad}}</td>
               <td>{{emp.hiringdate | date}}</td>
               <td style="font-size: 18px; color: #6294da">
-                <i style="cursor: pointer;" class="fas fa-edit mx-2"></i> 
+                <i style="cursor: pointer;" [routerLink]="['/editar', emp._id]" class="fas fa-edit mx-2"></i> 
                 <i style="cursor: pointer;" [routerLink]="['/ver', emp._id]" class="fas fa-eye mx-2"></i>
                 <i style="cursor: pointer;" (click)="deleteEmployee(emp._id)" class="fas fa-trash-alt mx-2"></i>
               </td>

@@ -1,1 +1,76 @@
-<p>editar works!</p>
+<div class="container my-4">
+    <h1>Editando: <b style="color: #31D2F2;">{{Employee.name}}</b></h1>
+
+    <div style="margin-top: 50px;">
+        <form [formGroup]="form" (ngSubmit)="editar(form.value)">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="fecha">Fecha de nacimiento</label>
+                        <input type="date" [(ngModel)]="Employee.birthdate" formControlName="birthdate" class="form-control inp" id="fecha" name="fecha">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="area">Area</label><br>
+                        <button [disabled]="area" [style.background-color]="area? '#949494': null" (click)="clickArea()" class="btn-l" style="width: 35%;">Administrativa</button>
+                        <button [disabled]="!area" [style.background-color]="!area? '#949494': null" (click)="clickArea()" class="btn-r" style="width: 35%;">Tecnología</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="pais">País</label>
+                        <select class="form-select inp" [(ngModel)]="Employee.country" formControlName="country" name="pais" id="pais">
+                            <option *ngFor="let pais of PaisesList" [value]="pais.name">{{pais.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="cargo">Cargo</label>
+                        <select class="form-select inp" [(ngModel)]="Employee.cargo" formControlName="cargo" name="cargo" id="cargo">
+                            <option *ngFor="let cargo of CargosList" [value]="cargo._id">{{cargo.cargo}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="username">Nombre de usuario</label>
+                        <input type="text" [(ngModel)]="Employee.username" formControlName="username" class="form-control inp" id="username" name="username">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="hiringdate">Fecha de contratación</label>
+                        <input type="date" [(ngModel)]="Employee.hiringdate" formControlName="hiringdate" class="form-control inp" id="hiringdate" name="hiringdate">
+                    </div>
+                </div>
+                <div [style.display]="form.value.cargo !== '609bdd24df06bc3294767ce7'? 'none': null" class="col-6">
+                    <div class="form-group">
+                        <label for="comision">Comisión</label>
+                        <input type="number" min="0" max="100" [(ngModel)]="Employee.comision" formControlName="comision" class="form-control inp" id="comision" name="comision">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <div class="form-check form-switch">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Estado</label>
+                        <input style="height: 25px; width: 40px; margin-right: 13px; background-color: #6294da;" [(ngModel)]="Employee.status" class="form-check-input" formControlName="status" type="checkbox" id="flexSwitchCheckDefault" checked>
+                      </div>
+                </div>
+            </div> 
+
+            <div style="margin-top: 40px;">
+                <button routerLink="/lista" class="btn btn-info mx-4" style="color: white;"><i class="fas fa-chevron-left" style="margin-right: 10px;"></i>Atrás</button>
+                <button type="submit" [disabled]="form.invalid" class="btn button"><i class="fas fa-edit"></i> Editar</button>
+            </div>
+        </form>
+    </div>
+</div>

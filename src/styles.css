@@ -38,4 +38,11 @@ body {
 
 .button {
     background-color: #6294da !important;
+    border-color: 1px solid #6294da !important;
+    color: white;
+}
+
+.inp {
+    border-radius: 10px !important;
+    width: 70% !important;
 }
