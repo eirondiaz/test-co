@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;700&display=swap');
+body {
+	background: #f9f9f9;
+	font-family: "Source Sans Pro", sans-serif;
+}
+
 .btn-l {
     display: inline-block;
     color: white;
@@ -22,4 +28,14 @@
     background-color: rgb(202, 202, 202);
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
+}
+
+.search-input {
+    border-radius: 20px !important;
+    width: 40%;
+    float: right;
+}
+
+.button {
+    background-color: #6294da !important;
 }

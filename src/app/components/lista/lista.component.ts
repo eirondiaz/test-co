@@ -11,6 +11,8 @@ import Swal from 'sweetalert2'
 export class ListaComponent implements OnInit {
 
   ListEmployees: Employee[] = []
+  EmployeesFiltered: Employee[] = []
+  search: boolean = false
 
   constructor(private dataService: DataService) { }
 
@@ -28,6 +30,11 @@ export class ListaComponent implements OnInit {
       },
       error => console.log(error)
     )
+  }
+
+  buscar(text: string) {
+    text.length > 0? this.search = true: this.search = false
+    this.EmployeesFiltered = this.ListEmployees.filter(x => x.name.toLowerCase().includes(text.toLowerCase()) || x.cargo.cargo.toLowerCase().includes(text.toLowerCase()) || x.edad.toString().toLowerCase().includes(text.toLowerCase()) || x.hiringdate.toLowerCase().includes(text.toLowerCase()))
   }
 
   calcularEdad(fecha) {

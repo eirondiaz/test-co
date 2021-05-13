@@ -90,8 +90,14 @@ export class NuevoComponent implements OnInit {
 
       return
     }
+    
     this.dataService.createEmployee(value).subscribe(
       res => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Empleado creado correctamente',
+          showConfirmButton: true,
+        })
         this.router.navigate(["/lista"])
       },
       error => {

@@ -1,7 +1,7 @@
 <div class="container my-4">
-    <div>
-        <h4>Empleados</h4>
-        <input class="form-control" type="text" placeholder="Buscar por cualquier campo">
+    <div class="sub-container">
+        <h1 style="display: inline-block;">Empleados</h1>
+        <input #b class="form-control search-input" (keyup)="buscar(b.value)" type="text" placeholder="Buscar por cualquier campo">
     </div>
 
     <table class="table mt-4">
@@ -14,20 +14,38 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let emp of ListEmployees">
-            <td>
-              <b>{{emp.name}} </b>
-              {{emp.cargo.cargo}}</td>
-            <td>{{emp.edad}}</td>
-            <td>{{emp.hiringdate | date}}</td>
-            <td>
-              <i style="cursor: pointer;" class="fas fa-edit"></i> | 
-              <i style="cursor: pointer;" [routerLink]="['/ver', emp._id]" class="fas fa-eye"></i> | 
-              <i style="cursor: pointer;" (click)="deleteEmployee(emp._id)" class="fas fa-trash-alt"></i>
-            </td>
-          </tr>
+          <ng-container *ngIf="!search">
+            <tr *ngFor="let emp of ListEmployees">
+              <td style="margin-left: 20px;">
+                <b style="font-size: 22px;">{{emp.name}} </b> <br>
+                <span style="color: rgb(153, 153, 153);">{{emp.cargo.cargo}}</span>
+              </td>
+              <td>{{emp.edad}}</td>
+              <td>{{emp.hiringdate | date}}</td>
+              <td style="font-size: 18px; color: #6294da">
+                <i style="cursor: pointer;" class="fas fa-edit mx-2"></i> 
+                <i style="cursor: pointer;" [routerLink]="['/ver', emp._id]" class="fas fa-eye mx-2"></i>
+                <i style="cursor: pointer;" (click)="deleteEmployee(emp._id)" class="fas fa-trash-alt mx-2"></i>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="search">
+            <tr *ngFor="let emp of EmployeesFiltered">
+              <td style="margin-left: 20px;">
+                <b style="font-size: 22px;">{{emp.name}} </b> <br>
+                <span style="color: rgb(153, 153, 153);">{{emp.cargo.cargo}}</span>
+              </td>
+              <td>{{emp.edad}}</td>
+              <td>{{emp.hiringdate | date}}</td>
+              <td style="font-size: 18px; color: #6294da">
+                <i style="cursor: pointer;" class="fas fa-edit mx-2"></i> 
+                <i style="cursor: pointer;" [routerLink]="['/ver', emp._id]" class="fas fa-eye mx-2"></i>
+                <i style="cursor: pointer;" (click)="deleteEmployee(emp._id)" class="fas fa-trash-alt mx-2"></i>
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
 
-      <button class="btn btn-primary" routerLink="/nuevo"><i class="fas fa-plus"></i> Crear nuevo empleado</button>
+      <button class="btn btn-primary button" routerLink="/nuevo"><i class="fas fa-plus"></i> Crear nuevo empleado</button>
 </div>
