@@ -27,7 +27,7 @@ export class NuevoComponent implements OnInit {
       name: ['', Validators.required],
       birthdate: ['', Validators.required],
       country: ['', Validators.required],
-      username: ['', Validators.required],
+      username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9]*')])],
       hiringdate: ['', Validators.required],
       status: [true, Validators.required],
       cargo: ['', Validators.required],
